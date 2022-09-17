@@ -42,3 +42,16 @@ WHILE "retry" is true DO
       STORE "retry" with false
    END IF
 END WHILE
+WHILE "isAccepted" is false DO
+   READ AND STORE "bayar" from user
+   IF "bayar" is equal "total_harga"
+      PRINT "Pembayaran diterima"
+      STORE "isAccepted" with true
+   ELSE IF "bayar" more than "total_harga"
+      PRINT "Pembayaran diterima, dengan kembalian sebesar ("kembalian")"
+      STORE "isAccepted" with true
+   ELSE
+      PRINT "Pembayaran ditolak, silakan bayar dengan nominal lebih besar"
+      STORE "isAccepted" with false
+   END IF
+END WHILE
