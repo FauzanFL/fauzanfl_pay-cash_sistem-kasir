@@ -1,0 +1,75 @@
+# Pay Cash
+
+Oleh : Fauzan Fashihul Lisan
+
+---
+
+## Deskripsi
+
+Pay Cash adalah sebuah sistem kasir sederhana yang dapat melakukan penghitungan total harga secara otomatis dengan memasukkan kode dari makanan yang sudah terdaftar dan melakukan pembayaran yang membandingkan pembayaran dan total harga.
+
+## Flowchart
+
+![flowchart for Pay cash](flowchart.png)
+
+## Pseudocode
+
+```
+DECLARATION
+list_barang : map;
+kode_barang, jumlah_barang, harga_barang : integer;
+total, total harga, bayar, kembalian : integer;
+isExist, retry, isValid, isAccepted : boolean;
+input : char;
+
+DESCRIPTION
+STORE "retry" with true
+STORE "isExist" with false
+STORE "isValid" with false
+STORE "isAccepted" with false
+WHILE "retry" is true DO
+   WHILE "isExist" is false DO
+      READ AND STORE "kode_barang" from user
+      WHILE "list_barang" is not empty DO
+         IF "kode_barang" is in "list_barang"
+	         STORE "harga_barang" with "harga_barang" from "list_barang"
+	         STORE "isExist" with true
+	         BREAK
+	      ELSE
+	         PRINT "Kode barang tidak terdaftar, silahkan input kembali"
+	      END IF
+      END WHILE
+   END WHILE
+   WHILE "isValid" is false DO
+      READ AND STORE "jumlah_barang" from user
+      IF "jumlah_barang" more than 0
+         STORE "isValid" with true
+      ELSE
+         PRINT "Jumlah barang harus lebih dari 0"
+      END IF
+   END WHILE
+   STORE "total" with "harga barang" times "jumlah_barang"
+   STORE "total_harga" with "total_harga" plus "total"
+   PRINT "total_harga"
+   PRINT "add more?"
+   READ AND STORE "input" from user
+   IF "input" is 'y' or 'Y'
+      STORE "retry" with true
+   ELSE
+      STORE "retry" with false
+   END IF
+END WHILE
+WHILE "isAccepted" is false DO
+   READ AND STORE "bayar" from user
+   IF "bayar" is equal "total_harga"
+      PRINT "Pembayaran diterima"
+      STORE "isAccepted" with true
+   ELSE IF "bayar" more than "total_harga"
+      PRINT "Pembayaran diterima, dengan kembalian sebesar ("kembalian")"
+      STORE "isAccepted" with true
+   ELSE
+      PRINT "Pembayaran ditolak, silakan bayar dengan nominal lebih besar"
+      STORE "isAccepted" with false
+   END IF
+END WHILE
+```
