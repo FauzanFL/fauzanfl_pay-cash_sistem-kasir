@@ -3,7 +3,7 @@ list_barang : map;
 kode_barang, jumlah_barang, harga_barang : integer; 
 total, total harga, bayar, kembalian : integer;
 isExist, retry, isValid, isAccepted : boolean;
-input : char ;
+input : char;
 
 DESCRIPTION
 STORE "retry" with true
@@ -15,7 +15,7 @@ WHILE "retry" is true DO
       READ AND STORE "kode_barang" from user
       WHILE "list_barang" is not empty DO
          IF "kode_barang" is in "list_barang"
-	         STORE "harga_barang" from "list_barang"
+	         STORE "harga_barang" with "harga_barang" from "list_barang"
 	         STORE "isExist" with true
 	         BREAK
 	      ELSE 
