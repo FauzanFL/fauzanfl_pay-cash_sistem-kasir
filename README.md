@@ -32,12 +32,12 @@ WHILE "retry" is true DO
       READ AND STORE "kode_barang" from user
       WHILE "list_barang" is not empty DO
          IF "kode_barang" is in "list_barang"
-	         STORE "harga_barang" with "harga_barang" from "list_barang"
-	         STORE "isExist" with true
-	         BREAK
-	      ELSE
-	         PRINT "Kode barang tidak terdaftar, silahkan input kembali"
-	      END IF
+	    STORE "harga_barang" with "harga_barang" from "list_barang"
+	    STORE "isExist" with true
+	    BREAK
+	 ELSE
+	    PRINT "Kode barang tidak terdaftar, silahkan input kembali"
+	 END IF
       END WHILE
    END WHILE
    WHILE "isValid" is false DO
