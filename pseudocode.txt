@@ -1,0 +1,44 @@
+DECLARATION
+list_barang : map;
+kode_barang, jumlah_barang, harga_barang : integer; 
+total, total harga, bayar, kembalian : integer;
+isExist, retry, isValid, isAccepted : boolean;
+input : char ;
+
+DESCRIPTION
+STORE "retry" with true
+STORE "isExist" with false
+STORE "isValid" with false
+STORE "isAccepted" with false
+WHILE "retry" is true DO
+   WHILE "isExist" is false DO 
+      READ AND STORE "kode_barang" from user
+      WHILE "list_barang" is not empty DO
+         IF "kode_barang" is in "list_barang"
+	         STORE "harga_barang" from "list_barang"
+	         STORE "isExist" with true
+	         BREAK
+	      ELSE 
+	         PRINT "Kode barang tidak terdaftar, silahkan input kembali"
+	      END IF
+      END WHILE
+   END WHILE
+   WHILE "isValid" is false DO
+      READ AND STORE "jumlah_barang" from user
+      IF "jumlah_barang" more than 0 
+         STORE "isValid" with true
+      ELSE
+         PRINT "Jumlah barang harus lebih dari 0"
+      END IF
+   END WHILE
+   STORE "total" with "harga barang" times "jumlah_barang"
+   STORE "total_harga" with "total_harga" plus "total"
+   PRINT "total_harga" 
+   PRINT "add more?"
+   READ AND STORE "input" from user
+   IF "input" is 'y' or 'Y'
+      STORE "retry" with true
+   ELSE
+      STORE "retry" with false
+   END IF
+END WHILE
